@@ -1,0 +1,4 @@
+order_id,datetime,region_id,currency_code,product_id,unit_price,quantity,is_online,customer_id,payment_method,subtotal,tax_amount,total,_kafka_key,_kafka_partition,_kafka_offset
+e7324981-a9f0-419f-b708-d0a333451fff,2026-05-04T08:11:00Z,US-TX,USD,PY-STREAM-005,59.99,3,true,CUST-4150,paypal,179.97,14.85,194.82,US-TX,0,0
+d61943e0-f543-4b5f-9c9a-18605ea4cfe5,2026-05-04T08:23:00Z,US-TX,USD,PY-DATA-002,49.99,1,true,CUST-1106,paypal,49.99,4.12,54.11,US-TX,0,1
+14da1915-8e74-47be-9e10-f7275d31af46,2026-05-04T08:28:00Z,CA-QC,CAD,PY-NLP-006,54.99,1,true,CUST-2133,paypal,54.99,8.23,63.22,CA-QC,0,2
