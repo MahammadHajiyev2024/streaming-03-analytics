@@ -76,7 +76,7 @@ ROOT_DIR: Final[Path] = Path.cwd()
 DATA_DIR: Final[Path] = ROOT_DIR / "data"
 OUTPUT_DIR: Final[Path] = DATA_DIR / "output"
 
-OUTPUT_CSV: Final[Path] = OUTPUT_DIR / "consumed_sales.csv"
+OUTPUT_CSV: Final[Path] = OUTPUT_DIR / "anomaly_detection_mo.csv"
 
 REGIONS_CSV: Final[Path] = DATA_DIR / "regions.csv"
 PRODUCTS_CSV: Final[Path] = DATA_DIR / "products.csv"
@@ -244,51 +244,41 @@ def process_message(
     region_lookup: dict[str, float],
     stats: RunningStats,
 ) -> dict[str, Any] | None:
-    """Process one consumed message.
-
-    Arguments after the asterisk must be passed as keyword arguments.
-
-    Steps:
-      - Validate required fields
-      - Enrich with derived fields
-      - Update running statistics
-
-    Arguments:
-        row: A raw consumed Kafka message row.
-        region_lookup: Tax rates by region_id.
-        stats: Running statistics accumulator.
-
-    Returns:
-        The enriched row, or None if validation failed.
-    """
-    # First, validate the message against the data contract.
-    # If validation fails, return None to indicate the message should be rejected.
-    errors = validate_required_fields(record=row, required_fields=SALES_REQUIRED_FIELDS)
-    if errors:
-        LOG.warning(f"Validation failed for order {row.get('order_id', '?')}")
-        LOG.warning(f"errors={errors}")
+    """Process one consumed message, run multi-stage data checks, and enrich."""
+    # -------------------------------------------------------------
+    # PHASE 5 CUSTOM PROJECT: Real-Time Operational Fraud Contract
+    # -------------------------------------------------------------
+    try:
+        quantity = int(row.get("quantity", 1))
+        price = float(row.get("unit_price", 0.0))
+        # Rule A: Flag bulk quantity manipulation anomalies (e.g., system exploits)
+        if quantity > 2:
+            LOG.warning(f"❌ [MO FRAUD ALERT] Order {row.get('order_id', '?')} REJECTED: Bulk volume anomaly (Quantity: {quantity})")
+            return None
+        # Rule B: Flag zero/negative payload corruption exploits
+        if quantity <= 0 or price <= 0:
+            LOG.warning(f"❌ [MO ANOMALY ALERT] Order {row.get('order_id', '?')} REJECTED: Corrupt financial metric metrics")
+            return None
+    except (ValueError, TypeError):
+        LOG.warning(f"❌ [MO CONTRACT VIOLATION] Order {row.get('order_id', '?')} skipped due to data type corruption.")
         return None
 
-    # Then, enrich the message with derived fields.
+    # Base Enrichment (calculates subtotal, tax_amount, total)
     enriched = enrich_message(row, region_lookup)
+
 
     total_val = enriched.get("total", 0.0)
     enriched["is_high_value"] = total_val > 100.0
 
-    # 4. Custom Real-Time Logs (Category D Observability Modification)
     if enriched["is_high_value"]:
-        LOG.info(f"==> [MO ALERT] Premium order caught: ${total_val:.2f} (High Value)")
+        LOG.info(f"==> [MO ALERT] Premium order caught: ${total_val:.2f} (High Value VIP)")
     else:
         LOG.info(f"==> [MO LOG] Standard order processed: ${total_val:.2f}")
 
-    LOG.info(f"Enriched message for order {enriched['order_id']}: {enriched}")
-    # Compute custom derived field
-    LOG.info(f"subtotal={enriched['subtotal']}")
-    LOG.info(f"tax={enriched['tax_amount']}")
-    LOG.info(f"total={enriched['total']}")
-    LOG.info(f"running_total={stats.total + enriched['total']:.2f}")
+    # Explicitly track our custom anomaly status for Phase 5 reporting output
+    enriched["anomaly_status"] = "APPROVED"
 
-    # Update running statistics with the new total.
+    LOG.info(f"running_total={stats.total + enriched['total']:.2f}")
     stats.update(enriched["total"])
     return enriched
 

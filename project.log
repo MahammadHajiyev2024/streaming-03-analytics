@@ -1448,3 +1448,585 @@ CHECK:
 2026-05-31 18:18:50 | INFO | C03 | ========================
 2026-05-31 18:18:50 | INFO | C03 | Consumer executed successfully!
 2026-05-31 18:18:50 | INFO | C03 | ========================
+2026-05-31 18:33:42 | DEBUG | C03 | KAFKA_BOOTSTRAP_SERVERS           = localhost:9092
+2026-05-31 18:33:42 | DEBUG | C03 | KAFKA_BROKER_ADDRESS_FAMILY       = v6
+2026-05-31 18:33:42 | DEBUG | C03 | KAFKA_TOPIC                       = streaming-03-analytics-case
+2026-05-31 18:33:42 | DEBUG | C03 | KAFKA_CLEAR_TOPIC_ON_START        = true
+2026-05-31 18:33:42 | DEBUG | C03 | PRODUCER_MESSAGE_COUNT            = 3
+2026-05-31 18:33:42 | DEBUG | C03 | PRODUCER_MESSAGE_INTERVAL_SECONDS = 2
+2026-05-31 18:33:42 | DEBUG | C03 | PRODUCER_MAX_MESSAGES             = 50
+2026-05-31 18:33:42 | DEBUG | C03 | PRODUCER_POLL_INTERVAL_SECONDS    = 15
+2026-05-31 18:33:42 | DEBUG | C03 | KAFKA_GROUP_ID                    = streaming-consumer-group-A
+2026-05-31 18:33:42 | DEBUG | C03 | KAFKA_AUTO_OFFSET_RESET           = earliest
+2026-05-31 18:33:42 | DEBUG | C03 | CONSUMER_TIMEOUT_SECONDS          = 10
+2026-05-31 18:33:42 | DEBUG | C03 | CONSUMER_MAX_MESSAGES             = 1000
+2026-05-31 18:33:42 | INFO | C03 | === RUN START ===
+2026-05-31 18:33:42 | INFO | C03 | project=C03
+2026-05-31 18:33:42 | INFO | C03 | repo_dir=streaming-03-analytics
+2026-05-31 18:33:42 | INFO | C03 | python=3.14.5
+2026-05-31 18:33:42 | INFO | C03 | os=Windows 11
+2026-05-31 18:33:42 | INFO | C03 | shell=powershell
+2026-05-31 18:33:42 | INFO | C03 | cwd=.
+2026-05-31 18:33:42 | INFO | C03 | github_actions=False
+2026-05-31 18:33:42 | INFO | C03 | ========================
+2026-05-31 18:33:42 | INFO | C03 | START consumer main()
+2026-05-31 18:33:42 | INFO | C03 | ========================
+2026-05-31 18:33:42 | INFO | C03 | ROOT_DIR = .
+2026-05-31 18:33:42 | INFO | C03 | DATA_DIR = data
+2026-05-31 18:33:42 | INFO | C03 | OUTPUT_CSV = data\output\consumed_sales.csv
+2026-05-31 18:33:42 | INFO | C03 | REGIONS_CSV = data\regions.csv
+2026-05-31 18:33:42 | INFO | C03 | PRODUCTS_CSV = data\products.csv
+2026-05-31 18:33:42 | INFO | C03 | CURRENCIES_CSV = data\currencies.csv
+2026-05-31 18:33:42 | INFO | C03 | DISCOUNT_CODES_CSV = data\discount_codes.csv
+2026-05-31 18:33:42 | INFO | C03 | ========================
+2026-05-31 18:33:42 | INFO | C03 | SECTION A. Acquire
+2026-05-31 18:33:42 | INFO | C03 | ========================
+2026-05-31 18:33:42 | INFO | C03 | Loading settings from .env...
+2026-05-31 18:33:42 | INFO | C03 | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-05-31 18:33:42 | INFO | C03 | KAFKA_TOPIC              = streaming-03-analytics-case
+2026-05-31 18:33:42 | INFO | C03 | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-05-31 18:33:42 | INFO | C03 | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-05-31 18:33:42 | INFO | C03 | CONSUMER_MAX_MESSAGES    = 1000
+2026-05-31 18:33:42 | INFO | C03 | Verifying Kafka connection...
+2026-05-31 18:33:42 | INFO | C03 | Kafka port is reachable.
+2026-05-31 18:33:42 | INFO | C03 | Verifying Kafka topic...
+2026-05-31 18:33:45 | INFO | C03 | Topic 'streaming-03-analytics-case' exists.
+2026-05-31 18:33:45 | INFO | C03 | Found 3 message(s) available.
+2026-05-31 18:33:45 | INFO | C03 | Creating Kafka consumer...
+2026-05-31 18:33:45 | INFO | C03 | Subscribed to topic: 'streaming-03-analytics-case' (reading from beginning)
+2026-05-31 18:33:45 | INFO | C03 | ========================
+2026-05-31 18:33:45 | INFO | C03 | SECTION C. Consume and Process Messages
+2026-05-31 18:33:45 | INFO | C03 | ========================
+2026-05-31 18:33:45 | INFO | C03 | Initializing output...
+2026-05-31 18:33:45 | INFO | C03 | Output CSV cleared: consumed_sales.csv
+2026-05-31 18:33:45 | INFO | C03 | Loading enrichment reference data...
+2026-05-31 18:33:45 | INFO | C03 | Found 6 region tax rates.
+2026-05-31 18:33:45 | INFO | C03 | Consuming messages...
+2026-05-31 18:33:45 | INFO | C03 | Waiting for up to 1000 message(s).
+2026-05-31 18:33:45 | INFO | C03 | Press CTRL+C to stop early.
+
+2026-05-31 18:33:48 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-05-31 18:33:48 | WARNING | C03 | ❌ [MO ANOMALY ALERT] Order e7324981-a9f0-419f-b708-d0a333451fff REJECTED: Corrupt financial metric metrics
+2026-05-31 18:33:48 | WARNING | C03 | MESSAGE REJECTED
+2026-05-31 18:33:48 | WARNING | C03 | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-05-31 18:33:48 | WARNING | C03 | skipped=1
+2026-05-31 18:33:48 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-05-31 18:33:48 | WARNING | C03 | ❌ [MO ANOMALY ALERT] Order d61943e0-f543-4b5f-9c9a-18605ea4cfe5 REJECTED: Corrupt financial metric metrics
+2026-05-31 18:33:48 | WARNING | C03 | MESSAGE REJECTED
+2026-05-31 18:33:48 | WARNING | C03 | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-05-31 18:33:48 | WARNING | C03 | skipped=2
+2026-05-31 18:33:48 | INFO | C03 | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-05-31 18:33:48 | WARNING | C03 | ❌ [MO ANOMALY ALERT] Order 14da1915-8e74-47be-9e10-f7275d31af46 REJECTED: Corrupt financial metric metrics
+2026-05-31 18:33:48 | WARNING | C03 | MESSAGE REJECTED
+2026-05-31 18:33:48 | WARNING | C03 | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-05-31 18:33:48 | WARNING | C03 | skipped=3
+2026-05-31 18:33:58 | INFO | C03 | No message received within 10.0s timeout.
+2026-05-31 18:33:58 | INFO | C03 | Producer finished or paused. Stopping consumer.
+2026-05-31 18:33:58 | INFO | C03 | Kafka consumer closed.
+2026-05-31 18:33:58 | INFO | C03 | ========================
+2026-05-31 18:33:58 | INFO | C03 | SECTION E. Exit
+2026-05-31 18:33:58 | INFO | C03 | ========================
+2026-05-31 18:33:58 | INFO | C03 | Summary:
+2026-05-31 18:33:58 | INFO | C03 | Consumed 0 message(s) from topic 'streaming-03-analytics-case'.
+2026-05-31 18:33:58 | INFO | C03 | Skipped  3 message(s).
+2026-05-31 18:33:58 | INFO | C03 | OUTPUT_CSV = data\output\consumed_sales.csv
+2026-05-31 18:33:58 | INFO | C03 | ========================
+2026-05-31 18:33:58 | INFO | C03 | Consumer executed successfully!
+2026-05-31 18:33:58 | INFO | C03 | ========================
+2026-05-31 18:37:09 | DEBUG | C03 | KAFKA_BOOTSTRAP_SERVERS           = localhost:9092
+2026-05-31 18:37:09 | DEBUG | C03 | KAFKA_BROKER_ADDRESS_FAMILY       = v6
+2026-05-31 18:37:09 | DEBUG | C03 | KAFKA_TOPIC                       = streaming-03-analytics-case
+2026-05-31 18:37:09 | DEBUG | C03 | KAFKA_CLEAR_TOPIC_ON_START        = true
+2026-05-31 18:37:09 | DEBUG | C03 | PRODUCER_MESSAGE_COUNT            = 3
+2026-05-31 18:37:09 | DEBUG | C03 | PRODUCER_MESSAGE_INTERVAL_SECONDS = 2
+2026-05-31 18:37:09 | DEBUG | C03 | PRODUCER_MAX_MESSAGES             = 50
+2026-05-31 18:37:09 | DEBUG | C03 | PRODUCER_POLL_INTERVAL_SECONDS    = 15
+2026-05-31 18:37:09 | DEBUG | C03 | KAFKA_GROUP_ID                    = streaming-consumer-group-A
+2026-05-31 18:37:09 | DEBUG | C03 | KAFKA_AUTO_OFFSET_RESET           = earliest
+2026-05-31 18:37:09 | DEBUG | C03 | CONSUMER_TIMEOUT_SECONDS          = 10
+2026-05-31 18:37:09 | DEBUG | C03 | CONSUMER_MAX_MESSAGES             = 1000
+2026-05-31 18:37:09 | INFO | C03 | === RUN START ===
+2026-05-31 18:37:09 | INFO | C03 | project=C03
+2026-05-31 18:37:09 | INFO | C03 | repo_dir=streaming-03-analytics
+2026-05-31 18:37:09 | INFO | C03 | python=3.14.5
+2026-05-31 18:37:09 | INFO | C03 | os=Windows 11
+2026-05-31 18:37:09 | INFO | C03 | shell=powershell
+2026-05-31 18:37:09 | INFO | C03 | cwd=.
+2026-05-31 18:37:09 | INFO | C03 | github_actions=False
+2026-05-31 18:37:09 | INFO | C03 | ========================
+2026-05-31 18:37:09 | INFO | C03 | START consumer main()
+2026-05-31 18:37:09 | INFO | C03 | ========================
+2026-05-31 18:37:09 | INFO | C03 | ROOT_DIR = .
+2026-05-31 18:37:09 | INFO | C03 | DATA_DIR = data
+2026-05-31 18:37:09 | INFO | C03 | OUTPUT_CSV = data\output\consumed_sales.csv
+2026-05-31 18:37:09 | INFO | C03 | REGIONS_CSV = data\regions.csv
+2026-05-31 18:37:09 | INFO | C03 | PRODUCTS_CSV = data\products.csv
+2026-05-31 18:37:09 | INFO | C03 | CURRENCIES_CSV = data\currencies.csv
+2026-05-31 18:37:09 | INFO | C03 | DISCOUNT_CODES_CSV = data\discount_codes.csv
+2026-05-31 18:37:09 | INFO | C03 | ========================
+2026-05-31 18:37:09 | INFO | C03 | SECTION A. Acquire
+2026-05-31 18:37:09 | INFO | C03 | ========================
+2026-05-31 18:37:09 | INFO | C03 | Loading settings from .env...
+2026-05-31 18:37:09 | INFO | C03 | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-05-31 18:37:09 | INFO | C03 | KAFKA_TOPIC              = streaming-03-analytics-case
+2026-05-31 18:37:09 | INFO | C03 | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-05-31 18:37:09 | INFO | C03 | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-05-31 18:37:09 | INFO | C03 | CONSUMER_MAX_MESSAGES    = 1000
+2026-05-31 18:37:09 | INFO | C03 | Verifying Kafka connection...
+2026-05-31 18:37:09 | INFO | C03 | Kafka port is reachable.
+2026-05-31 18:37:09 | INFO | C03 | Verifying Kafka topic...
+2026-05-31 18:37:09 | INFO | C03 | Topic 'streaming-03-analytics-case' exists.
+2026-05-31 18:37:09 | INFO | C03 | Found 3 message(s) available.
+2026-05-31 18:37:09 | INFO | C03 | Creating Kafka consumer...
+2026-05-31 18:37:09 | INFO | C03 | Subscribed to topic: 'streaming-03-analytics-case' (reading from beginning)
+2026-05-31 18:37:09 | INFO | C03 | ========================
+2026-05-31 18:37:09 | INFO | C03 | SECTION C. Consume and Process Messages
+2026-05-31 18:37:09 | INFO | C03 | ========================
+2026-05-31 18:37:09 | INFO | C03 | Initializing output...
+2026-05-31 18:37:09 | INFO | C03 | Output CSV cleared: consumed_sales.csv
+2026-05-31 18:37:09 | INFO | C03 | Loading enrichment reference data...
+2026-05-31 18:37:09 | INFO | C03 | Found 6 region tax rates.
+2026-05-31 18:37:09 | INFO | C03 | Consuming messages...
+2026-05-31 18:37:09 | INFO | C03 | Waiting for up to 1000 message(s).
+2026-05-31 18:37:09 | INFO | C03 | Press CTRL+C to stop early.
+
+2026-05-31 18:37:12 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-05-31 18:37:12 | WARNING | C03 | ❌ [MO ANOMALY ALERT] Order e7324981-a9f0-419f-b708-d0a333451fff REJECTED: Corrupt financial metric metrics
+2026-05-31 18:37:12 | WARNING | C03 | MESSAGE REJECTED
+2026-05-31 18:37:12 | WARNING | C03 | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-05-31 18:37:12 | WARNING | C03 | skipped=1
+2026-05-31 18:37:12 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-05-31 18:37:12 | WARNING | C03 | ❌ [MO ANOMALY ALERT] Order d61943e0-f543-4b5f-9c9a-18605ea4cfe5 REJECTED: Corrupt financial metric metrics
+2026-05-31 18:37:12 | WARNING | C03 | MESSAGE REJECTED
+2026-05-31 18:37:12 | WARNING | C03 | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-05-31 18:37:12 | WARNING | C03 | skipped=2
+2026-05-31 18:37:12 | INFO | C03 | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-05-31 18:37:12 | WARNING | C03 | ❌ [MO ANOMALY ALERT] Order 14da1915-8e74-47be-9e10-f7275d31af46 REJECTED: Corrupt financial metric metrics
+2026-05-31 18:37:12 | WARNING | C03 | MESSAGE REJECTED
+2026-05-31 18:37:12 | WARNING | C03 | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-05-31 18:37:12 | WARNING | C03 | skipped=3
+2026-05-31 18:37:23 | INFO | C03 | No message received within 10.0s timeout.
+2026-05-31 18:37:23 | INFO | C03 | Producer finished or paused. Stopping consumer.
+2026-05-31 18:37:23 | INFO | C03 | Kafka consumer closed.
+2026-05-31 18:37:23 | INFO | C03 | ========================
+2026-05-31 18:37:23 | INFO | C03 | SECTION E. Exit
+2026-05-31 18:37:23 | INFO | C03 | ========================
+2026-05-31 18:37:23 | INFO | C03 | Summary:
+2026-05-31 18:37:23 | INFO | C03 | Consumed 0 message(s) from topic 'streaming-03-analytics-case'.
+2026-05-31 18:37:23 | INFO | C03 | Skipped  3 message(s).
+2026-05-31 18:37:23 | INFO | C03 | OUTPUT_CSV = data\output\consumed_sales.csv
+2026-05-31 18:37:23 | INFO | C03 | ========================
+2026-05-31 18:37:23 | INFO | C03 | Consumer executed successfully!
+2026-05-31 18:37:23 | INFO | C03 | ========================
+2026-05-31 18:39:33 | DEBUG | C03 | KAFKA_BOOTSTRAP_SERVERS           = localhost:9092
+2026-05-31 18:39:33 | DEBUG | C03 | KAFKA_BROKER_ADDRESS_FAMILY       = v6
+2026-05-31 18:39:33 | DEBUG | C03 | KAFKA_TOPIC                       = streaming-03-analytics-case
+2026-05-31 18:39:33 | DEBUG | C03 | KAFKA_CLEAR_TOPIC_ON_START        = true
+2026-05-31 18:39:33 | DEBUG | C03 | PRODUCER_MESSAGE_COUNT            = 3
+2026-05-31 18:39:33 | DEBUG | C03 | PRODUCER_MESSAGE_INTERVAL_SECONDS = 2
+2026-05-31 18:39:33 | DEBUG | C03 | PRODUCER_MAX_MESSAGES             = 50
+2026-05-31 18:39:33 | DEBUG | C03 | PRODUCER_POLL_INTERVAL_SECONDS    = 15
+2026-05-31 18:39:33 | DEBUG | C03 | KAFKA_GROUP_ID                    = streaming-consumer-group-A
+2026-05-31 18:39:33 | DEBUG | C03 | KAFKA_AUTO_OFFSET_RESET           = earliest
+2026-05-31 18:39:33 | DEBUG | C03 | CONSUMER_TIMEOUT_SECONDS          = 10
+2026-05-31 18:39:33 | DEBUG | C03 | CONSUMER_MAX_MESSAGES             = 1000
+2026-05-31 18:39:33 | INFO | C03 | === RUN START ===
+2026-05-31 18:39:33 | INFO | C03 | project=C03
+2026-05-31 18:39:33 | INFO | C03 | repo_dir=streaming-03-analytics
+2026-05-31 18:39:33 | INFO | C03 | python=3.14.5
+2026-05-31 18:39:33 | INFO | C03 | os=Windows 11
+2026-05-31 18:39:33 | INFO | C03 | shell=powershell
+2026-05-31 18:39:33 | INFO | C03 | cwd=.
+2026-05-31 18:39:33 | INFO | C03 | github_actions=False
+2026-05-31 18:39:33 | INFO | C03 | ========================
+2026-05-31 18:39:33 | INFO | C03 | START consumer main()
+2026-05-31 18:39:33 | INFO | C03 | ========================
+2026-05-31 18:39:33 | INFO | C03 | ROOT_DIR = .
+2026-05-31 18:39:33 | INFO | C03 | DATA_DIR = data
+2026-05-31 18:39:33 | INFO | C03 | OUTPUT_CSV = data\output\consumed_sales.csv
+2026-05-31 18:39:33 | INFO | C03 | REGIONS_CSV = data\regions.csv
+2026-05-31 18:39:33 | INFO | C03 | PRODUCTS_CSV = data\products.csv
+2026-05-31 18:39:33 | INFO | C03 | CURRENCIES_CSV = data\currencies.csv
+2026-05-31 18:39:33 | INFO | C03 | DISCOUNT_CODES_CSV = data\discount_codes.csv
+2026-05-31 18:39:33 | INFO | C03 | ========================
+2026-05-31 18:39:33 | INFO | C03 | SECTION A. Acquire
+2026-05-31 18:39:33 | INFO | C03 | ========================
+2026-05-31 18:39:33 | INFO | C03 | Loading settings from .env...
+2026-05-31 18:39:33 | INFO | C03 | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-05-31 18:39:33 | INFO | C03 | KAFKA_TOPIC              = streaming-03-analytics-case
+2026-05-31 18:39:33 | INFO | C03 | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-05-31 18:39:33 | INFO | C03 | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-05-31 18:39:33 | INFO | C03 | CONSUMER_MAX_MESSAGES    = 1000
+2026-05-31 18:39:33 | INFO | C03 | Verifying Kafka connection...
+2026-05-31 18:39:33 | INFO | C03 | Kafka port is reachable.
+2026-05-31 18:39:33 | INFO | C03 | Verifying Kafka topic...
+2026-05-31 18:39:44 | INFO | C03 | Topic 'streaming-03-analytics-case' exists.
+2026-05-31 18:39:44 | INFO | C03 | Found 3 message(s) available.
+2026-05-31 18:39:44 | INFO | C03 | Creating Kafka consumer...
+2026-05-31 18:39:44 | INFO | C03 | Subscribed to topic: 'streaming-03-analytics-case' (reading from beginning)
+2026-05-31 18:39:44 | INFO | C03 | ========================
+2026-05-31 18:39:44 | INFO | C03 | SECTION C. Consume and Process Messages
+2026-05-31 18:39:44 | INFO | C03 | ========================
+2026-05-31 18:39:44 | INFO | C03 | Initializing output...
+2026-05-31 18:39:44 | INFO | C03 | Output CSV cleared: consumed_sales.csv
+2026-05-31 18:39:44 | INFO | C03 | Loading enrichment reference data...
+2026-05-31 18:39:44 | INFO | C03 | Found 6 region tax rates.
+2026-05-31 18:39:44 | INFO | C03 | Consuming messages...
+2026-05-31 18:39:44 | INFO | C03 | Waiting for up to 1000 message(s).
+2026-05-31 18:39:44 | INFO | C03 | Press CTRL+C to stop early.
+
+2026-05-31 18:39:48 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-05-31 18:39:48 | WARNING | C03 | ❌ [MO FRAUD ALERT] Order e7324981-a9f0-419f-b708-d0a333451fff REJECTED: Bulk volume anomaly (Quantity: 3)
+2026-05-31 18:39:48 | WARNING | C03 | MESSAGE REJECTED
+2026-05-31 18:39:48 | WARNING | C03 | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-05-31 18:39:48 | WARNING | C03 | skipped=1
+2026-05-31 18:39:48 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-05-31 18:39:48 | INFO | C03 | ==> [MO LOG] Standard order processed: $54.11
+2026-05-31 18:39:48 | INFO | C03 | running_total=54.11
+2026-05-31 18:39:48 | INFO | C03 | MESSAGE ACCEPTED
+2026-05-31 18:39:48 | INFO | C03 | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-05-31 18:39:48 | INFO | C03 | total=$54.11
+2026-05-31 18:39:48 | INFO | C03 | consumed=1
+2026-05-31 18:39:48 | INFO | C03 | RUNNING STATS
+2026-05-31 18:39:48 | INFO | C03 | total_sales=$54.11
+2026-05-31 18:39:48 | INFO | C03 | average=$54.11
+2026-05-31 18:39:48 | INFO | C03 | min=$54.11
+2026-05-31 18:39:48 | INFO | C03 | max=$54.11
+2026-05-31 18:39:48 | INFO | C03 | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-05-31 18:39:48 | INFO | C03 | ==> [MO LOG] Standard order processed: $63.22
+2026-05-31 18:39:48 | INFO | C03 | running_total=117.33
+2026-05-31 18:39:48 | INFO | C03 | MESSAGE ACCEPTED
+2026-05-31 18:39:48 | INFO | C03 | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-05-31 18:39:48 | INFO | C03 | total=$63.22
+2026-05-31 18:39:48 | INFO | C03 | consumed=2
+2026-05-31 18:39:48 | INFO | C03 | RUNNING STATS
+2026-05-31 18:39:48 | INFO | C03 | total_sales=$117.33
+2026-05-31 18:39:48 | INFO | C03 | average=$58.66
+2026-05-31 18:39:48 | INFO | C03 | min=$54.11
+2026-05-31 18:39:48 | INFO | C03 | max=$63.22
+2026-05-31 18:39:58 | INFO | C03 | No message received within 10.0s timeout.
+2026-05-31 18:39:58 | INFO | C03 | Producer finished or paused. Stopping consumer.
+2026-05-31 18:39:58 | INFO | C03 | Kafka consumer closed.
+2026-05-31 18:39:58 | INFO | C03 | ========================
+2026-05-31 18:39:58 | INFO | C03 | SECTION E. Exit
+2026-05-31 18:39:58 | INFO | C03 | ========================
+2026-05-31 18:39:58 | INFO | C03 | Summary:
+2026-05-31 18:39:58 | INFO | C03 | Consumed 2 message(s) from topic 'streaming-03-analytics-case'.
+2026-05-31 18:39:58 | INFO | C03 | Skipped  1 message(s).
+2026-05-31 18:39:58 | INFO | C03 | OUTPUT_CSV = data\output\consumed_sales.csv
+2026-05-31 18:39:58 | INFO | C03 |   Total sales:  $117.33
+2026-05-31 18:39:58 | INFO | C03 |   Average sale: $58.66
+2026-05-31 18:39:58 | INFO | C03 |   Minimum sale: $54.11
+2026-05-31 18:39:58 | INFO | C03 |   Maximum sale: $63.22
+2026-05-31 18:39:58 | INFO | C03 | ========================
+2026-05-31 18:39:58 | INFO | C03 | Consumer executed successfully!
+2026-05-31 18:39:58 | INFO | C03 | ========================
+2026-05-31 18:43:21 | DEBUG | C03 | KAFKA_BOOTSTRAP_SERVERS           = localhost:9092
+2026-05-31 18:43:21 | DEBUG | C03 | KAFKA_BROKER_ADDRESS_FAMILY       = v6
+2026-05-31 18:43:21 | DEBUG | C03 | KAFKA_TOPIC                       = streaming-03-analytics-case
+2026-05-31 18:43:21 | DEBUG | C03 | KAFKA_CLEAR_TOPIC_ON_START        = true
+2026-05-31 18:43:21 | DEBUG | C03 | PRODUCER_MESSAGE_COUNT            = 3
+2026-05-31 18:43:21 | DEBUG | C03 | PRODUCER_MESSAGE_INTERVAL_SECONDS = 2
+2026-05-31 18:43:21 | DEBUG | C03 | PRODUCER_MAX_MESSAGES             = 50
+2026-05-31 18:43:21 | DEBUG | C03 | PRODUCER_POLL_INTERVAL_SECONDS    = 15
+2026-05-31 18:43:21 | DEBUG | C03 | KAFKA_GROUP_ID                    = streaming-consumer-group-A
+2026-05-31 18:43:21 | DEBUG | C03 | KAFKA_AUTO_OFFSET_RESET           = earliest
+2026-05-31 18:43:21 | DEBUG | C03 | CONSUMER_TIMEOUT_SECONDS          = 10
+2026-05-31 18:43:21 | DEBUG | C03 | CONSUMER_MAX_MESSAGES             = 1000
+2026-05-31 18:43:21 | INFO | C03 | === RUN START ===
+2026-05-31 18:43:21 | INFO | C03 | project=C03
+2026-05-31 18:43:21 | INFO | C03 | repo_dir=streaming-03-analytics
+2026-05-31 18:43:21 | INFO | C03 | python=3.14.5
+2026-05-31 18:43:21 | INFO | C03 | os=Windows 11
+2026-05-31 18:43:21 | INFO | C03 | shell=powershell
+2026-05-31 18:43:21 | INFO | C03 | cwd=.
+2026-05-31 18:43:21 | INFO | C03 | github_actions=False
+2026-05-31 18:43:21 | INFO | C03 | ========================
+2026-05-31 18:43:21 | INFO | C03 | START consumer main()
+2026-05-31 18:43:21 | INFO | C03 | ========================
+2026-05-31 18:43:21 | INFO | C03 | ROOT_DIR = .
+2026-05-31 18:43:21 | INFO | C03 | DATA_DIR = data
+2026-05-31 18:43:21 | INFO | C03 | OUTPUT_CSV = data\output\consumed_sales.csv
+2026-05-31 18:43:21 | INFO | C03 | REGIONS_CSV = data\regions.csv
+2026-05-31 18:43:21 | INFO | C03 | PRODUCTS_CSV = data\products.csv
+2026-05-31 18:43:21 | INFO | C03 | CURRENCIES_CSV = data\currencies.csv
+2026-05-31 18:43:21 | INFO | C03 | DISCOUNT_CODES_CSV = data\discount_codes.csv
+2026-05-31 18:43:21 | INFO | C03 | ========================
+2026-05-31 18:43:21 | INFO | C03 | SECTION A. Acquire
+2026-05-31 18:43:21 | INFO | C03 | ========================
+2026-05-31 18:43:21 | INFO | C03 | Loading settings from .env...
+2026-05-31 18:43:21 | INFO | C03 | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-05-31 18:43:21 | INFO | C03 | KAFKA_TOPIC              = streaming-03-analytics-case
+2026-05-31 18:43:21 | INFO | C03 | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-05-31 18:43:21 | INFO | C03 | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-05-31 18:43:21 | INFO | C03 | CONSUMER_MAX_MESSAGES    = 1000
+2026-05-31 18:43:21 | INFO | C03 | Verifying Kafka connection...
+2026-05-31 18:43:21 | INFO | C03 | Kafka port is reachable.
+2026-05-31 18:43:21 | INFO | C03 | Verifying Kafka topic...
+2026-05-31 18:43:21 | INFO | C03 | Topic 'streaming-03-analytics-case' exists.
+2026-05-31 18:43:21 | INFO | C03 | Found 3 message(s) available.
+2026-05-31 18:43:21 | INFO | C03 | Creating Kafka consumer...
+2026-05-31 18:43:21 | INFO | C03 | Subscribed to topic: 'streaming-03-analytics-case' (reading from beginning)
+2026-05-31 18:43:21 | INFO | C03 | ========================
+2026-05-31 18:43:21 | INFO | C03 | SECTION C. Consume and Process Messages
+2026-05-31 18:43:21 | INFO | C03 | ========================
+2026-05-31 18:43:21 | INFO | C03 | Initializing output...
+2026-05-31 18:43:21 | INFO | C03 | Output CSV cleared: consumed_sales.csv
+2026-05-31 18:43:21 | INFO | C03 | Loading enrichment reference data...
+2026-05-31 18:43:21 | INFO | C03 | Found 6 region tax rates.
+2026-05-31 18:43:21 | INFO | C03 | Consuming messages...
+2026-05-31 18:43:21 | INFO | C03 | Waiting for up to 1000 message(s).
+2026-05-31 18:43:21 | INFO | C03 | Press CTRL+C to stop early.
+
+2026-05-31 18:43:24 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-05-31 18:43:24 | WARNING | C03 | ❌ [MO FRAUD ALERT] Order e7324981-a9f0-419f-b708-d0a333451fff REJECTED: Bulk volume anomaly (Quantity: 3)
+2026-05-31 18:43:24 | WARNING | C03 | MESSAGE REJECTED
+2026-05-31 18:43:24 | WARNING | C03 | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-05-31 18:43:24 | WARNING | C03 | skipped=1
+2026-05-31 18:43:24 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-05-31 18:43:24 | INFO | C03 | ==> [MO LOG] Standard order processed: $54.11
+2026-05-31 18:43:24 | INFO | C03 | running_total=54.11
+2026-05-31 18:43:24 | INFO | C03 | MESSAGE ACCEPTED
+2026-05-31 18:43:24 | INFO | C03 | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-05-31 18:43:24 | INFO | C03 | total=$54.11
+2026-05-31 18:43:24 | INFO | C03 | consumed=1
+2026-05-31 18:43:24 | INFO | C03 | RUNNING STATS
+2026-05-31 18:43:24 | INFO | C03 | total_sales=$54.11
+2026-05-31 18:43:24 | INFO | C03 | average=$54.11
+2026-05-31 18:43:24 | INFO | C03 | min=$54.11
+2026-05-31 18:43:24 | INFO | C03 | max=$54.11
+2026-05-31 18:43:24 | INFO | C03 | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-05-31 18:43:24 | INFO | C03 | ==> [MO LOG] Standard order processed: $63.22
+2026-05-31 18:43:24 | INFO | C03 | running_total=117.33
+2026-05-31 18:43:24 | INFO | C03 | MESSAGE ACCEPTED
+2026-05-31 18:43:24 | INFO | C03 | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-05-31 18:43:24 | INFO | C03 | total=$63.22
+2026-05-31 18:43:24 | INFO | C03 | consumed=2
+2026-05-31 18:43:24 | INFO | C03 | RUNNING STATS
+2026-05-31 18:43:24 | INFO | C03 | total_sales=$117.33
+2026-05-31 18:43:24 | INFO | C03 | average=$58.66
+2026-05-31 18:43:24 | INFO | C03 | min=$54.11
+2026-05-31 18:43:24 | INFO | C03 | max=$63.22
+2026-05-31 18:43:34 | INFO | C03 | No message received within 10.0s timeout.
+2026-05-31 18:43:34 | INFO | C03 | Producer finished or paused. Stopping consumer.
+2026-05-31 18:43:34 | INFO | C03 | Kafka consumer closed.
+2026-05-31 18:43:34 | INFO | C03 | ========================
+2026-05-31 18:43:34 | INFO | C03 | SECTION E. Exit
+2026-05-31 18:43:34 | INFO | C03 | ========================
+2026-05-31 18:43:34 | INFO | C03 | Summary:
+2026-05-31 18:43:34 | INFO | C03 | Consumed 2 message(s) from topic 'streaming-03-analytics-case'.
+2026-05-31 18:43:34 | INFO | C03 | Skipped  1 message(s).
+2026-05-31 18:43:34 | INFO | C03 | OUTPUT_CSV = data\output\consumed_sales.csv
+2026-05-31 18:43:34 | INFO | C03 |   Total sales:  $117.33
+2026-05-31 18:43:34 | INFO | C03 |   Average sale: $58.66
+2026-05-31 18:43:34 | INFO | C03 |   Minimum sale: $54.11
+2026-05-31 18:43:34 | INFO | C03 |   Maximum sale: $63.22
+2026-05-31 18:43:34 | INFO | C03 | ========================
+2026-05-31 18:43:34 | INFO | C03 | Consumer executed successfully!
+2026-05-31 18:43:34 | INFO | C03 | ========================
+2026-05-31 18:43:47 | DEBUG | C03 | KAFKA_BOOTSTRAP_SERVERS           = localhost:9092
+2026-05-31 18:43:47 | DEBUG | C03 | KAFKA_BROKER_ADDRESS_FAMILY       = v6
+2026-05-31 18:43:47 | DEBUG | C03 | KAFKA_TOPIC                       = streaming-03-analytics-case
+2026-05-31 18:43:47 | DEBUG | C03 | KAFKA_CLEAR_TOPIC_ON_START        = true
+2026-05-31 18:43:47 | DEBUG | C03 | PRODUCER_MESSAGE_COUNT            = 3
+2026-05-31 18:43:47 | DEBUG | C03 | PRODUCER_MESSAGE_INTERVAL_SECONDS = 2
+2026-05-31 18:43:47 | DEBUG | C03 | PRODUCER_MAX_MESSAGES             = 50
+2026-05-31 18:43:47 | DEBUG | C03 | PRODUCER_POLL_INTERVAL_SECONDS    = 15
+2026-05-31 18:43:47 | DEBUG | C03 | KAFKA_GROUP_ID                    = streaming-consumer-group-A
+2026-05-31 18:43:47 | DEBUG | C03 | KAFKA_AUTO_OFFSET_RESET           = earliest
+2026-05-31 18:43:47 | DEBUG | C03 | CONSUMER_TIMEOUT_SECONDS          = 10
+2026-05-31 18:43:47 | DEBUG | C03 | CONSUMER_MAX_MESSAGES             = 1000
+2026-05-31 18:43:47 | INFO | C03 | === RUN START ===
+2026-05-31 18:43:47 | INFO | C03 | project=C03
+2026-05-31 18:43:47 | INFO | C03 | repo_dir=streaming-03-analytics
+2026-05-31 18:43:47 | INFO | C03 | python=3.14.5
+2026-05-31 18:43:47 | INFO | C03 | os=Windows 11
+2026-05-31 18:43:47 | INFO | C03 | shell=powershell
+2026-05-31 18:43:47 | INFO | C03 | cwd=.
+2026-05-31 18:43:47 | INFO | C03 | github_actions=False
+2026-05-31 18:43:47 | INFO | C03 | ========================
+2026-05-31 18:43:47 | INFO | C03 | START consumer main()
+2026-05-31 18:43:47 | INFO | C03 | ========================
+2026-05-31 18:43:47 | INFO | C03 | ROOT_DIR = .
+2026-05-31 18:43:47 | INFO | C03 | DATA_DIR = data
+2026-05-31 18:43:47 | INFO | C03 | OUTPUT_CSV = data\output\anomaly_detection_mo.csv
+2026-05-31 18:43:47 | INFO | C03 | REGIONS_CSV = data\regions.csv
+2026-05-31 18:43:47 | INFO | C03 | PRODUCTS_CSV = data\products.csv
+2026-05-31 18:43:47 | INFO | C03 | CURRENCIES_CSV = data\currencies.csv
+2026-05-31 18:43:47 | INFO | C03 | DISCOUNT_CODES_CSV = data\discount_codes.csv
+2026-05-31 18:43:47 | INFO | C03 | ========================
+2026-05-31 18:43:47 | INFO | C03 | SECTION A. Acquire
+2026-05-31 18:43:47 | INFO | C03 | ========================
+2026-05-31 18:43:47 | INFO | C03 | Loading settings from .env...
+2026-05-31 18:43:47 | INFO | C03 | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-05-31 18:43:47 | INFO | C03 | KAFKA_TOPIC              = streaming-03-analytics-case
+2026-05-31 18:43:47 | INFO | C03 | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-05-31 18:43:47 | INFO | C03 | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-05-31 18:43:47 | INFO | C03 | CONSUMER_MAX_MESSAGES    = 1000
+2026-05-31 18:43:47 | INFO | C03 | Verifying Kafka connection...
+2026-05-31 18:43:47 | INFO | C03 | Kafka port is reachable.
+2026-05-31 18:43:47 | INFO | C03 | Verifying Kafka topic...
+2026-05-31 18:43:49 | INFO | C03 | Topic 'streaming-03-analytics-case' exists.
+2026-05-31 18:43:49 | INFO | C03 | Found 3 message(s) available.
+2026-05-31 18:43:49 | INFO | C03 | Creating Kafka consumer...
+2026-05-31 18:43:49 | INFO | C03 | Subscribed to topic: 'streaming-03-analytics-case' (reading from beginning)
+2026-05-31 18:43:49 | INFO | C03 | ========================
+2026-05-31 18:43:49 | INFO | C03 | SECTION C. Consume and Process Messages
+2026-05-31 18:43:49 | INFO | C03 | ========================
+2026-05-31 18:43:49 | INFO | C03 | Initializing output...
+2026-05-31 18:43:49 | INFO | C03 | Output CSV cleared: anomaly_detection_mo.csv
+2026-05-31 18:43:49 | INFO | C03 | Loading enrichment reference data...
+2026-05-31 18:43:49 | INFO | C03 | Found 6 region tax rates.
+2026-05-31 18:43:49 | INFO | C03 | Consuming messages...
+2026-05-31 18:43:49 | INFO | C03 | Waiting for up to 1000 message(s).
+2026-05-31 18:43:49 | INFO | C03 | Press CTRL+C to stop early.
+
+2026-05-31 18:43:52 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-05-31 18:43:52 | WARNING | C03 | ❌ [MO FRAUD ALERT] Order e7324981-a9f0-419f-b708-d0a333451fff REJECTED: Bulk volume anomaly (Quantity: 3)
+2026-05-31 18:43:52 | WARNING | C03 | MESSAGE REJECTED
+2026-05-31 18:43:52 | WARNING | C03 | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-05-31 18:43:52 | WARNING | C03 | skipped=1
+2026-05-31 18:43:52 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-05-31 18:43:52 | INFO | C03 | ==> [MO LOG] Standard order processed: $54.11
+2026-05-31 18:43:52 | INFO | C03 | running_total=54.11
+2026-05-31 18:43:52 | INFO | C03 | MESSAGE ACCEPTED
+2026-05-31 18:43:52 | INFO | C03 | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-05-31 18:43:52 | INFO | C03 | total=$54.11
+2026-05-31 18:43:52 | INFO | C03 | consumed=1
+2026-05-31 18:43:52 | INFO | C03 | RUNNING STATS
+2026-05-31 18:43:52 | INFO | C03 | total_sales=$54.11
+2026-05-31 18:43:52 | INFO | C03 | average=$54.11
+2026-05-31 18:43:52 | INFO | C03 | min=$54.11
+2026-05-31 18:43:52 | INFO | C03 | max=$54.11
+2026-05-31 18:43:52 | INFO | C03 | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-05-31 18:43:52 | INFO | C03 | ==> [MO LOG] Standard order processed: $63.22
+2026-05-31 18:43:52 | INFO | C03 | running_total=117.33
+2026-05-31 18:43:52 | INFO | C03 | MESSAGE ACCEPTED
+2026-05-31 18:43:52 | INFO | C03 | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-05-31 18:43:52 | INFO | C03 | total=$63.22
+2026-05-31 18:43:52 | INFO | C03 | consumed=2
+2026-05-31 18:43:52 | INFO | C03 | RUNNING STATS
+2026-05-31 18:43:52 | INFO | C03 | total_sales=$117.33
+2026-05-31 18:43:52 | INFO | C03 | average=$58.66
+2026-05-31 18:43:52 | INFO | C03 | min=$54.11
+2026-05-31 18:43:52 | INFO | C03 | max=$63.22
+2026-05-31 18:44:03 | INFO | C03 | No message received within 10.0s timeout.
+2026-05-31 18:44:03 | INFO | C03 | Producer finished or paused. Stopping consumer.
+2026-05-31 18:44:03 | INFO | C03 | Kafka consumer closed.
+2026-05-31 18:44:03 | INFO | C03 | ========================
+2026-05-31 18:44:03 | INFO | C03 | SECTION E. Exit
+2026-05-31 18:44:03 | INFO | C03 | ========================
+2026-05-31 18:44:03 | INFO | C03 | Summary:
+2026-05-31 18:44:03 | INFO | C03 | Consumed 2 message(s) from topic 'streaming-03-analytics-case'.
+2026-05-31 18:44:03 | INFO | C03 | Skipped  1 message(s).
+2026-05-31 18:44:03 | INFO | C03 | OUTPUT_CSV = data\output\anomaly_detection_mo.csv
+2026-05-31 18:44:03 | INFO | C03 |   Total sales:  $117.33
+2026-05-31 18:44:03 | INFO | C03 |   Average sale: $58.66
+2026-05-31 18:44:03 | INFO | C03 |   Minimum sale: $54.11
+2026-05-31 18:44:03 | INFO | C03 |   Maximum sale: $63.22
+2026-05-31 18:44:03 | INFO | C03 | ========================
+2026-05-31 18:44:03 | INFO | C03 | Consumer executed successfully!
+2026-05-31 18:44:03 | INFO | C03 | ========================
+2026-05-31 18:45:27 | DEBUG | C03 | KAFKA_BOOTSTRAP_SERVERS           = localhost:9092
+2026-05-31 18:45:27 | DEBUG | C03 | KAFKA_BROKER_ADDRESS_FAMILY       = v6
+2026-05-31 18:45:27 | DEBUG | C03 | KAFKA_TOPIC                       = streaming-03-analytics-case
+2026-05-31 18:45:27 | DEBUG | C03 | KAFKA_CLEAR_TOPIC_ON_START        = true
+2026-05-31 18:45:27 | DEBUG | C03 | PRODUCER_MESSAGE_COUNT            = 3
+2026-05-31 18:45:27 | DEBUG | C03 | PRODUCER_MESSAGE_INTERVAL_SECONDS = 2
+2026-05-31 18:45:27 | DEBUG | C03 | PRODUCER_MAX_MESSAGES             = 50
+2026-05-31 18:45:27 | DEBUG | C03 | PRODUCER_POLL_INTERVAL_SECONDS    = 15
+2026-05-31 18:45:27 | DEBUG | C03 | KAFKA_GROUP_ID                    = streaming-consumer-group-A
+2026-05-31 18:45:27 | DEBUG | C03 | KAFKA_AUTO_OFFSET_RESET           = earliest
+2026-05-31 18:45:27 | DEBUG | C03 | CONSUMER_TIMEOUT_SECONDS          = 10
+2026-05-31 18:45:27 | DEBUG | C03 | CONSUMER_MAX_MESSAGES             = 1000
+2026-05-31 18:45:27 | INFO | C03 | === RUN START ===
+2026-05-31 18:45:27 | INFO | C03 | project=C03
+2026-05-31 18:45:27 | INFO | C03 | repo_dir=streaming-03-analytics
+2026-05-31 18:45:27 | INFO | C03 | python=3.14.5
+2026-05-31 18:45:27 | INFO | C03 | os=Windows 11
+2026-05-31 18:45:27 | INFO | C03 | shell=powershell
+2026-05-31 18:45:27 | INFO | C03 | cwd=.
+2026-05-31 18:45:27 | INFO | C03 | github_actions=False
+2026-05-31 18:45:27 | INFO | C03 | ========================
+2026-05-31 18:45:27 | INFO | C03 | START consumer main()
+2026-05-31 18:45:27 | INFO | C03 | ========================
+2026-05-31 18:45:27 | INFO | C03 | ROOT_DIR = .
+2026-05-31 18:45:27 | INFO | C03 | DATA_DIR = data
+2026-05-31 18:45:27 | INFO | C03 | OUTPUT_CSV = data\output\anomaly_detection_mo.csv
+2026-05-31 18:45:27 | INFO | C03 | REGIONS_CSV = data\regions.csv
+2026-05-31 18:45:27 | INFO | C03 | PRODUCTS_CSV = data\products.csv
+2026-05-31 18:45:27 | INFO | C03 | CURRENCIES_CSV = data\currencies.csv
+2026-05-31 18:45:27 | INFO | C03 | DISCOUNT_CODES_CSV = data\discount_codes.csv
+2026-05-31 18:45:27 | INFO | C03 | ========================
+2026-05-31 18:45:27 | INFO | C03 | SECTION A. Acquire
+2026-05-31 18:45:27 | INFO | C03 | ========================
+2026-05-31 18:45:27 | INFO | C03 | Loading settings from .env...
+2026-05-31 18:45:27 | INFO | C03 | KAFKA_BOOTSTRAP_SERVERS  = localhost:9092
+2026-05-31 18:45:27 | INFO | C03 | KAFKA_TOPIC              = streaming-03-analytics-case
+2026-05-31 18:45:27 | INFO | C03 | KAFKA_GROUP_ID           = streaming-consumer-group-A
+2026-05-31 18:45:27 | INFO | C03 | CONSUMER_TIMEOUT_SECONDS = 10.0
+2026-05-31 18:45:27 | INFO | C03 | CONSUMER_MAX_MESSAGES    = 1000
+2026-05-31 18:45:27 | INFO | C03 | Verifying Kafka connection...
+2026-05-31 18:45:27 | INFO | C03 | Kafka port is reachable.
+2026-05-31 18:45:27 | INFO | C03 | Verifying Kafka topic...
+2026-05-31 18:45:27 | INFO | C03 | Topic 'streaming-03-analytics-case' exists.
+2026-05-31 18:45:27 | INFO | C03 | Found 3 message(s) available.
+2026-05-31 18:45:27 | INFO | C03 | Creating Kafka consumer...
+2026-05-31 18:45:27 | INFO | C03 | Subscribed to topic: 'streaming-03-analytics-case' (reading from beginning)
+2026-05-31 18:45:27 | INFO | C03 | ========================
+2026-05-31 18:45:27 | INFO | C03 | SECTION C. Consume and Process Messages
+2026-05-31 18:45:27 | INFO | C03 | ========================
+2026-05-31 18:45:27 | INFO | C03 | Initializing output...
+2026-05-31 18:45:27 | INFO | C03 | Output CSV cleared: anomaly_detection_mo.csv
+2026-05-31 18:45:27 | INFO | C03 | Loading enrichment reference data...
+2026-05-31 18:45:27 | INFO | C03 | Found 6 region tax rates.
+2026-05-31 18:45:27 | INFO | C03 | Consuming messages...
+2026-05-31 18:45:27 | INFO | C03 | Waiting for up to 1000 message(s).
+2026-05-31 18:45:27 | INFO | C03 | Press CTRL+C to stop early.
+
+2026-05-31 18:45:30 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-4150', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:11:00Z', 'device_type': 'tablet', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'payment_method': 'paypal', 'product_id': 'PY-STREAM-005', 'quantity': '3', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '59.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 0}
+2026-05-31 18:45:30 | WARNING | C03 | ❌ [MO FRAUD ALERT] Order e7324981-a9f0-419f-b708-d0a333451fff REJECTED: Bulk volume anomaly (Quantity: 3)
+2026-05-31 18:45:30 | WARNING | C03 | MESSAGE REJECTED
+2026-05-31 18:45:30 | WARNING | C03 | order=e7324981-a9f0-419f-b708-d0a333451fff
+2026-05-31 18:45:30 | WARNING | C03 | skipped=1
+2026-05-31 18:45:30 | INFO | C03 | {'currency_code': 'USD', 'customer_id': 'CUST-1106', 'customer_note': 'Gift for my team', 'datetime': '2026-05-04T08:23:00Z', 'device_type': 'mobile', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'payment_method': 'paypal', 'product_id': 'PY-DATA-002', 'quantity': '1', 'referral_source': 'paid_search', 'region_id': 'US-TX', 'unit_price': '49.99', '_kafka_key': 'US-TX', '_kafka_partition': 0, '_kafka_offset': 1}
+2026-05-31 18:45:30 | INFO | C03 | ==> [MO LOG] Standard order processed: $54.11
+2026-05-31 18:45:30 | INFO | C03 | running_total=54.11
+2026-05-31 18:45:30 | INFO | C03 | MESSAGE ACCEPTED
+2026-05-31 18:45:30 | INFO | C03 | order=d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+2026-05-31 18:45:30 | INFO | C03 | total=$54.11
+2026-05-31 18:45:30 | INFO | C03 | consumed=1
+2026-05-31 18:45:30 | INFO | C03 | RUNNING STATS
+2026-05-31 18:45:30 | INFO | C03 | total_sales=$54.11
+2026-05-31 18:45:30 | INFO | C03 | average=$54.11
+2026-05-31 18:45:30 | INFO | C03 | min=$54.11
+2026-05-31 18:45:30 | INFO | C03 | max=$54.11
+2026-05-31 18:45:30 | INFO | C03 | {'currency_code': 'CAD', 'customer_id': 'CUST-2133', 'customer_note': 'Learning at my own pace', 'datetime': '2026-05-04T08:28:00Z', 'device_type': 'desktop', 'discount_code': '', 'is_new_customer': 'false', 'is_online': 'true', 'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'payment_method': 'paypal', 'product_id': 'PY-NLP-006', 'quantity': '1', 'referral_source': 'organic', 'region_id': 'CA-QC', 'unit_price': '54.99', '_kafka_key': 'CA-QC', '_kafka_partition': 0, '_kafka_offset': 2}
+2026-05-31 18:45:30 | INFO | C03 | ==> [MO LOG] Standard order processed: $63.22
+2026-05-31 18:45:30 | INFO | C03 | running_total=117.33
+2026-05-31 18:45:30 | INFO | C03 | MESSAGE ACCEPTED
+2026-05-31 18:45:30 | INFO | C03 | order=14da1915-8e74-47be-9e10-f7275d31af46
+2026-05-31 18:45:30 | INFO | C03 | total=$63.22
+2026-05-31 18:45:30 | INFO | C03 | consumed=2
+2026-05-31 18:45:30 | INFO | C03 | RUNNING STATS
+2026-05-31 18:45:30 | INFO | C03 | total_sales=$117.33
+2026-05-31 18:45:30 | INFO | C03 | average=$58.66
+2026-05-31 18:45:30 | INFO | C03 | min=$54.11
+2026-05-31 18:45:30 | INFO | C03 | max=$63.22
+2026-05-31 18:45:41 | INFO | C03 | No message received within 10.0s timeout.
+2026-05-31 18:45:41 | INFO | C03 | Producer finished or paused. Stopping consumer.
+2026-05-31 18:45:41 | INFO | C03 | Kafka consumer closed.
+2026-05-31 18:45:41 | INFO | C03 | ========================
+2026-05-31 18:45:41 | INFO | C03 | SECTION E. Exit
+2026-05-31 18:45:41 | INFO | C03 | ========================
+2026-05-31 18:45:41 | INFO | C03 | Summary:
+2026-05-31 18:45:41 | INFO | C03 | Consumed 2 message(s) from topic 'streaming-03-analytics-case'.
+2026-05-31 18:45:41 | INFO | C03 | Skipped  1 message(s).
+2026-05-31 18:45:41 | INFO | C03 | OUTPUT_CSV = data\output\anomaly_detection_mo.csv
+2026-05-31 18:45:41 | INFO | C03 |   Total sales:  $117.33
+2026-05-31 18:45:41 | INFO | C03 |   Average sale: $58.66
+2026-05-31 18:45:41 | INFO | C03 |   Minimum sale: $54.11
+2026-05-31 18:45:41 | INFO | C03 |   Maximum sale: $63.22
+2026-05-31 18:45:41 | INFO | C03 | ========================
+2026-05-31 18:45:41 | INFO | C03 | Consumer executed successfully!
+2026-05-31 18:45:41 | INFO | C03 | ========================

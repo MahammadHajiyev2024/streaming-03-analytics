@@ -138,6 +138,7 @@ CONSUMED_FIELDNAMES: Final[list[str]] = [
     "_kafka_partition",
     "_kafka_offset",
     "is_high_value",
+    "anomaly_status",
 ]
 
 REJECTED_SALES_FIELDNAMES: Final[list[str]] = [
