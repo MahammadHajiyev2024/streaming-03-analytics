@@ -11,8 +11,8 @@ Work up to see how it all fits together.
 Many functions are standard helpers
 and should not need project-specific modifications.
 
-Author: Denise Case
-Date: 2026-05
+Author: Mahammad Hajiyev
+Date: 2026-05-31
 
 Terminal command to run this file from the root project folder:
 
